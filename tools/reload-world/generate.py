@@ -21,6 +21,7 @@ from scipy import ndimage
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from maplib import ROOT, region, INDEX, enc_terrain, enc_objects, dec_terrain, dec_objects
 from locs import LOCS
+from content import N as CUSTOM_NPC          # ids of the custom monsters and bosses
 
 SEED = 20261113
 RX0, RY0 = 60, 26                 # south-west region of the 4x4 block
@@ -430,15 +431,17 @@ spawns = []
 def npc(nid, x, y, radius=0, desc='', facing='SOUTH'):
     spawns.append({"facing": facing, "radius": radius, "id": nid,
                    "position": {"x": BX + int(x), "y": BY + int(y), "z": 0}, "description": "RELOAD world: " + desc})
-def npc_scatter(nid, mask, n, radius, desc, seed, gap=4):
+def npc_scatter(nid, mask, n, radius, desc, seed, gap=4, on_floor=False):
     r = np.random.default_rng(SEED + seed)
-    xs, ys = np.nonzero(mask & ~blocked & ~occ)
+    xs, ys = np.nonzero(mask & ~blocked & (~occ | on_floor))      # on_floor: arenas and paths are fine too
     chosen = []
+    start = len(spawns)
     for i in r.permutation(len(xs)):
         p = (int(xs[i]), int(ys[i]))
         if all(abs(p[0] - q[0]) + abs(p[1] - q[1]) >= gap for q in chosen):
             chosen.append(p); npc(nid, p[0], p[1], radius, desc)
             if len(chosen) >= n: break
+    assert len(spawns) - start >= max(1, n // 2), ('too few spawns placed', desc, len(spawns) - start, n)
 # fishing spots: water tiles that touch the shore
 shore_lake = lake & ndimage.binary_dilation(~lake & land)
 r_ = np.random.default_rng(SEED + 80)
@@ -451,15 +454,19 @@ def coast_spots(sel, n, seed):
 coast_spots((DX > 60) & (np.abs(DY) < 30), 4, 81)
 coast_spots((DY < -60) & (np.abs(DX) < 30), 4, 82)
 vol = free & (biome == VOLCANO) & ~arena_mask & (cone_d > 15)
-npc_scatter(2005, vol & (DY < 62), 6, 3, 'lesser demon', 83, 6)
+npc_scatter(CUSTOM_NPC['EMBER_DEMON'], vol & (DY < 66), 9, 3, 'ember demon', 83, 6)
 npc_scatter(2025, vol & (DY >= 50), 5, 3, 'greater demon', 84, 7)
 npc_scatter(135, vol, 4, 3, 'hellhound', 85, 8)
 npc_scatter(2075, vol & (DY >= 44), 4, 3, 'fire giant', 86, 8)
 npc_scatter(247, vol & (cone_d < 34), 2, 2, 'red dragon', 87, 12)
 npc_scatter(252, vol & (cone_d < 30), 2, 2, 'black dragon', 88, 12)
-npc(6609, ARENA_A[0] - 2, ARENA_A[1] - 2, 3, 'Callisto (west arena)')
-npc(6504, ARENA_B[0] - 2, ARENA_B[1] - 2, 3, 'Venenatis (east arena)')
-npc(239, CRATER[0] - 2, CRATER[1] - 2, 2, 'King Black Dragon (crater)')
+npc(CUSTOM_NPC['FROSTCLAW'], ARENA_A[0] - 2, ARENA_A[1] - 2, 3, 'Frostclaw (west arena)')
+npc(CUSTOM_NPC['VENOMQUEEN'], ARENA_B[0] - 2, ARENA_B[1] - 2, 3, 'Venomqueen (east arena)')
+npc(CUSTOM_NPC['MAGMAROTH'], CRATER[0] - 2, CRATER[1] - 2, 2, 'Magmaroth (crater)')
+# training grounds: the pillar arena on the south beach
+_ring = disc(*BEACH_ARENA, 10) & ~disc(*BEACH_ARENA, 3) & ~blocked
+npc_scatter(CUSTOM_NPC['SPARRING_GIANT'], _ring & (Y >= BEACH_ARENA[1]), 10, 2, 'sparring giant (training)', 97, 4, on_floor=True)
+npc_scatter(CUSTOM_NPC['SPARRING_BRUTE'], _ring & (Y < BEACH_ARENA[1] - 2), 5, 2, 'sparring brute (training)', 98, 5, on_floor=True)
 mead = free & (biome == MEADOW) & ~path
 npc_scatter(2805, mead & (DX > 30), 5, 4, 'cow', 89)
 npc_scatter(2692, mead & (DX > 30), 5, 3, 'chicken', 90)
@@ -481,8 +488,8 @@ assert home_lab != 0, 'home tile is blocked'
 ZONES = {
     'home': HOME, 'bank': (BANK_AT[0] - 2, BANK_AT[1] + 4), 'forest': (176, C), 'lake': (LAKE[0] - 6, LAKE[1] + 11),
     'mine': (MINE[0] - 1, MINE[1]), 'smithy': (SMITHY[0], SMITHY[1]), 'magic_trees': (GROVE[0] - 7, GROVE[1]),
-    'volcano': (C, 172), 'callisto': (ARENA_A[0] + 7, ARENA_A[1] - 6), 'venenatis': (ARENA_B[0] - 7, ARENA_B[1] - 6),
-    'kbd': (CRATER[0], CRATER[1] - 15), 'beach': (C, 84), 'arena': (BEACH_ARENA[0], BEACH_ARENA[1]),
+    'volcano': (C, 172), 'frostclaw': (ARENA_A[0] + 7, ARENA_A[1] - 6), 'venomqueen': (ARENA_B[0] - 7, ARENA_B[1] - 6),
+    'magmaroth': (CRATER[0], CRATER[1] - 15), 'beach': (C, 84), 'train': (BEACH_ARENA[0], BEACH_ARENA[1] + 1),
     'pvp': (PVP_EDGE_X + 4, C), 'chaos_altar': (CHAOS_ALTAR[0] + 3, CHAOS_ALTAR[1] - 2),
 }
 def nearest_walkable(p):

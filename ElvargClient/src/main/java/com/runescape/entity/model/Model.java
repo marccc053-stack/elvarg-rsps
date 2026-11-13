@@ -2270,6 +2270,24 @@ public class Model extends Renderable {
         }
     }
 
+    /**
+     * Recolours the whole model to one hue while keeping the light and dark of every face,
+     * used for the custom RELOAD items and NPCs. Faces that were already strongly coloured
+     * (trims, gems, eyes) get the accent hue so the model keeps two tones.
+     * Colours are packed as hue (6 bits), saturation (3 bits), lightness (7 bits).
+     */
+    public void tint(int hue, int saturation, int accentHue) {
+        if (triangleColours == null)
+            return;
+        for (int face = 0; face < numTriangles; face++) {
+            int colour = triangleColours[face] & 0xffff;
+            int oldSaturation = (colour >> 7) & 7;
+            int lightness = colour & 0x7f;
+            int newHue = oldSaturation >= 5 ? accentHue : hue;
+            triangleColours[face] = (short) ((newHue << 10) | (saturation << 7) | lightness);
+        }
+    }
+
     public void recolor(int found, int replace) {
         if (triangleColours != null)
             for (int face = 0; face < numTriangles; face++)

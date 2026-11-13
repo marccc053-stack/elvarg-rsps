@@ -33,11 +33,11 @@ public final class ReloadWorld {
         ZONES.put("smithy", new Location(4016, 1820, 0));
         ZONES.put("magictrees", new Location(4033, 1786, 0));
         ZONES.put("volcano", new Location(3968, 1836, 0));
-        ZONES.put("callisto", new Location(3947, 1844, 0));
-        ZONES.put("venenatis", new Location(3989, 1844, 0));
-        ZONES.put("kbd", new Location(3968, 1847, 0));
+        ZONES.put("frostclaw", new Location(3947, 1844, 0));
+        ZONES.put("venomqueen", new Location(3989, 1844, 0));
+        ZONES.put("magmaroth", new Location(3968, 1847, 0));
         ZONES.put("beach", new Location(3968, 1748, 0));
-        ZONES.put("arena", new Location(3968, 1730, 0));
+        ZONES.put("train", new Location(3968, 1731, 0));
         ZONES.put("pvp", new Location(3931, 1792, 0));
         ZONES.put("chaosaltar", new Location(3905, 1790, 0));
     }

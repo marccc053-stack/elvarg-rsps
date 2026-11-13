@@ -32,6 +32,8 @@ public final class NpcDefinition {
 	public int[] additionalModels;
 	public int headIcon;
 	public int[] recolourOriginal;
+	/** Custom RELOAD NPCs: recolour the whole model (see Model.tint). -1 = off. */
+	public int tintHue = -1, tintSaturation, tintAccentHue;
 	public int standAnim;
 	public long interfaceType;
 	public int degreesToTurn;
@@ -80,10 +82,15 @@ public final class NpcDefinition {
 
 		anInt56 = (anInt56 + 1) % 20;
 		NpcDefinition definition = cache[anInt56] = new NpcDefinition();
-		dataBuf.currentPosition = offsets[id];
+		// Custom RELOAD NPCs are not in the cache: they read the definition of the NPC they copy.
+		int sourceId = ReloadCustoms.baseNpc(id);
+		if (sourceId < 0 || sourceId >= offsets.length)
+			sourceId = 0;
+		dataBuf.currentPosition = offsets[sourceId];
 		definition.interfaceType = id;
 		definition.id = id;
 		definition.readValues(dataBuf);
+		ReloadCustoms.applyNpc(definition);
 
 		switch (id) {
 		// Pets
@@ -277,6 +284,8 @@ public final class NpcDefinition {
 				model.recolor(recolourOriginal[index], recolourTarget[index]);
 
 		}
+		if (tintHue != -1)
+			model.tint(tintHue, tintSaturation, tintAccentHue);
 		return model;
 	}
 
@@ -327,6 +336,8 @@ public final class NpcDefinition {
 					model.recolor(recolourOriginal[k1], recolourTarget[k1]);
 
 			}
+			if (tintHue != -1)
+				model.tint(tintHue, tintSaturation, tintAccentHue);
 			model.skin();
 			model.scale(132, 132, 132);
 			model.light(84 + lightModifier, 1000 + shadowModifier, -90, -580, -90, true);
@@ -378,6 +389,8 @@ public final class NpcDefinition {
 					model.recolor(recolourOriginal[index], recolourTarget[index]);
 
 			}
+			if (tintHue != -1)
+				model.tint(tintHue, tintSaturation, tintAccentHue);
 			model.skin();
 			model.light(64 + lightModifier, 850 + shadowModifier, -30, -50, -30, true);
 			modelCache.put(model, interfaceType);

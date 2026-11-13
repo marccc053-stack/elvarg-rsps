@@ -145,68 +145,101 @@
   {
     "facing": "SOUTH",
     "radius": 3,
-    "id": 2005,
+    "id": 15005,
     "position": {
-      "x": 3977,
-      "y": 1849,
+      "x": 3948,
+      "y": 1835,
       "z": 0
     },
-    "description": "RELOAD world: lesser demon"
+    "description": "RELOAD world: ember demon"
   },
   {
     "facing": "SOUTH",
     "radius": 3,
-    "id": 2005,
+    "id": 15005,
     "position": {
-      "x": 3958,
-      "y": 1846,
+      "x": 3991,
+      "y": 1825,
       "z": 0
     },
-    "description": "RELOAD world: lesser demon"
+    "description": "RELOAD world: ember demon"
   },
   {
     "facing": "SOUTH",
     "radius": 3,
-    "id": 2005,
+    "id": 15005,
     "position": {
-      "x": 3944,
-      "y": 1841,
-      "z": 0
-    },
-    "description": "RELOAD world: lesser demon"
-  },
-  {
-    "facing": "SOUTH",
-    "radius": 3,
-    "id": 2005,
-    "position": {
-      "x": 3949,
-      "y": 1829,
-      "z": 0
-    },
-    "description": "RELOAD world: lesser demon"
-  },
-  {
-    "facing": "SOUTH",
-    "radius": 3,
-    "id": 2005,
-    "position": {
-      "x": 3999,
+      "x": 3951,
       "y": 1831,
       "z": 0
     },
-    "description": "RELOAD world: lesser demon"
+    "description": "RELOAD world: ember demon"
   },
   {
     "facing": "SOUTH",
     "radius": 3,
-    "id": 2005,
+    "id": 15005,
     "position": {
-      "x": 3964,
+      "x": 3990,
+      "y": 1838,
+      "z": 0
+    },
+    "description": "RELOAD world: ember demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 15005,
+    "position": {
+      "x": 3972,
+      "y": 1846,
+      "z": 0
+    },
+    "description": "RELOAD world: ember demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 15005,
+    "position": {
+      "x": 3958,
       "y": 1845,
       "z": 0
     },
-    "description": "RELOAD world: lesser demon"
+    "description": "RELOAD world: ember demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 15005,
+    "position": {
+      "x": 3995,
+      "y": 1837,
+      "z": 0
+    },
+    "description": "RELOAD world: ember demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 15005,
+    "position": {
+      "x": 3992,
+      "y": 1833,
+      "z": 0
+    },
+    "description": "RELOAD world: ember demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 15005,
+    "position": {
+      "x": 4001,
+      "y": 1840,
+      "z": 0
+    },
+    "description": "RELOAD world: ember demon"
   },
   {
     "facing": "SOUTH",
@@ -398,35 +431,200 @@
   {
     "facing": "SOUTH",
     "radius": 3,
-    "id": 6609,
+    "id": 15002,
     "position": {
       "x": 3938,
       "y": 1848,
       "z": 0
     },
-    "description": "RELOAD world: Callisto (west arena)"
+    "description": "RELOAD world: Frostclaw (west arena)"
   },
   {
     "facing": "SOUTH",
     "radius": 3,
-    "id": 6504,
+    "id": 15001,
     "position": {
       "x": 3994,
       "y": 1848,
       "z": 0
     },
-    "description": "RELOAD world: Venenatis (east arena)"
+    "description": "RELOAD world: Venomqueen (east arena)"
   },
   {
     "facing": "SOUTH",
     "radius": 2,
-    "id": 239,
+    "id": 15000,
     "position": {
       "x": 3966,
       "y": 1860,
       "z": 0
     },
-    "description": "RELOAD world: King Black Dragon (crater)"
+    "description": "RELOAD world: Magmaroth (crater)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15003,
+    "position": {
+      "x": 3962,
+      "y": 1731,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring giant (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15003,
+    "position": {
+      "x": 3974,
+      "y": 1731,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring giant (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15003,
+    "position": {
+      "x": 3970,
+      "y": 1738,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring giant (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15003,
+    "position": {
+      "x": 3966,
+      "y": 1737,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring giant (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15003,
+    "position": {
+      "x": 3969,
+      "y": 1735,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring giant (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15003,
+    "position": {
+      "x": 3975,
+      "y": 1737,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring giant (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15003,
+    "position": {
+      "x": 3960,
+      "y": 1736,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring giant (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15003,
+    "position": {
+      "x": 3972,
+      "y": 1736,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring giant (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15003,
+    "position": {
+      "x": 3971,
+      "y": 1733,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring giant (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15003,
+    "position": {
+      "x": 3962,
+      "y": 1738,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring giant (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15004,
+    "position": {
+      "x": 3960,
+      "y": 1724,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring brute (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15004,
+    "position": {
+      "x": 3965,
+      "y": 1723,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring brute (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15004,
+    "position": {
+      "x": 3964,
+      "y": 1727,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring brute (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15004,
+    "position": {
+      "x": 3970,
+      "y": 1722,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring brute (training)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 15004,
+    "position": {
+      "x": 3968,
+      "y": 1726,
+      "z": 0
+    },
+    "description": "RELOAD world: sparring brute (training)"
   },
   {
     "facing": "SOUTH",

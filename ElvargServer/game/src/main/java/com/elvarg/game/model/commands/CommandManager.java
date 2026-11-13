@@ -33,7 +33,8 @@ public class CommandManager {
         put(new GroundItemCommand(), "ground");
         put(new Store(), "store", "donate");
         put(new MaxHit(), "maxhit", "mh");
-        put(new ZoneCommand(), "zone", "zones", "world");
+        put(new ZoneCommand(), "zone", "zones", "world", "train");
+        put(new ReloadGearCommand(), "reloadgear");
 
         /**
          * Donators Command

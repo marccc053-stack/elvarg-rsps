@@ -5,6 +5,7 @@ import com.elvarg.game.definition.NpcDefinition;
 import com.elvarg.game.definition.loader.DefinitionLoader;
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.io.FileReader;
 
 public class NpcDefinitionLoader extends DefinitionLoader {
@@ -18,6 +19,16 @@ public class NpcDefinitionLoader extends DefinitionLoader {
             NpcDefinition.definitions.put(def.getId(), def);
         }
         reader.close();
+
+        // Custom RELOAD NPCs live in their own file (written by tools/reload-world/content.py)
+        File extra = new File(GameConstants.DEFINITIONS_DIRECTORY + "npc_defs_reload.json");
+        if (extra.exists()) {
+            try (FileReader extraReader = new FileReader(extra)) {
+                for (NpcDefinition def : new Gson().fromJson(extraReader, NpcDefinition[].class)) {
+                    NpcDefinition.definitions.put(def.getId(), def);
+                }
+            }
+        }
     }
 
     @Override

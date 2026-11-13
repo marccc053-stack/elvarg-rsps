@@ -9,18 +9,19 @@ import com.elvarg.game.model.teleportation.TeleportType;
 
 /**
  * Teleports to a named spot in the custom RELOAD world.
- * ::zone lists the spots, ::zone mine teleports to the mine.
+ * ::zone lists the spots, ::zone mine teleports to the mine, ::train goes straight to the training grounds.
  */
 public class ZoneCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        if (parts.length < 2) {
+        String zone = parts[0].equalsIgnoreCase("train") ? "train" : parts.length > 1 ? parts[1].toLowerCase() : null;
+        if (zone == null) {
             player.getPacketSender().sendMessage("Zones: " + String.join(", ", ReloadWorld.ZONES.keySet()));
             player.getPacketSender().sendMessage("Use ::zone name, for example ::zone home");
             return;
         }
-        Location target = ReloadWorld.ZONES.get(parts[1].toLowerCase());
+        Location target = ReloadWorld.ZONES.get(zone);
         if (target == null) {
             player.getPacketSender().sendMessage("Unknown zone. Zones: " + String.join(", ", ReloadWorld.ZONES.keySet()));
             return;

@@ -24,6 +24,8 @@ public final class ItemDefinition {
     public int[] modified_model_colors;
     public int id;
     public int[] original_model_colors;
+    /** Custom RELOAD items: recolour the whole model (see Model.tint). -1 = off. */
+    public int tintHue = -1, tintSaturation, tintAccentHue;
     public boolean is_members_only;
     public int noted_item_id;
     public int equipped_model_female_2;
@@ -100,11 +102,16 @@ public final class ItemDefinition {
 
         cacheIndex = (cacheIndex + 1) % 10;
         ItemDefinition itemDef = cache[cacheIndex];
-        if (itemId > 0)
-            item_data.currentPosition = streamIndices[itemId];
+        // Custom RELOAD items are not in the cache: they read the definition of the item they copy.
+        int sourceId = ReloadCustoms.baseItem(itemId);
+        if (sourceId < 0 || sourceId >= totalItems)
+            sourceId = 0;
+        if (sourceId > 0)
+            item_data.currentPosition = streamIndices[sourceId];
         itemDef.id = itemId;
         itemDef.setDefaults();
         itemDef.readValues(item_data);
+        ReloadCustoms.applyItem(itemDef);
 
         if (itemDef.noted_item_id != -1)
             itemDef.toNote();
@@ -379,6 +386,8 @@ public final class ItemDefinition {
                 dialogueModel_.recolor(modified_model_colors[i1], original_model_colors[i1]);
 
         }
+        if (tintHue != -1)
+            dialogueModel_.tint(tintHue, tintSaturation, tintAccentHue);
         return dialogueModel_;
     }
 
@@ -436,6 +445,8 @@ public final class ItemDefinition {
                 primaryModel_.recolor(modified_model_colors[i1], original_model_colors[i1]);
 
         }
+        if (tintHue != -1)
+            primaryModel_.tint(tintHue, tintSaturation, tintAccentHue);
         return primaryModel_;
     }
 
@@ -444,6 +455,7 @@ public final class ItemDefinition {
         name = null;
         modified_model_colors = null;
         original_model_colors = null;
+        tintHue = -1;
         modelZoom = 2000;
         rotation_y = 0;
         rotation_x = 0;
@@ -537,6 +549,8 @@ public final class ItemDefinition {
                 model.recolor(modified_model_colors[l], original_model_colors[l]);
 
         }
+        if (tintHue != -1)
+            model.tint(tintHue, tintSaturation, tintAccentHue);
         int lightInt = 64 + light_intensity;
         int lightMag = 768 + light_mag;
         model.light(lightInt, lightMag, -50, -10, -50, true);
@@ -563,6 +577,8 @@ public final class ItemDefinition {
                 model.recolor(modified_model_colors[colorPtr], original_model_colors[colorPtr]);
 
         }
+        if (tintHue != -1)
+            model.tint(tintHue, tintSaturation, tintAccentHue);
         return model;
     }
 

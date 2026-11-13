@@ -53,7 +53,7 @@ public class Widget {
 	public static final int TYPE_BOX = 18;
 	public static final int TYPE_MAP = 19;
 	public static final int BEGIN_READING_PRAYER_INTERFACE = 6;// Amount of total custom prayers we've added
-	public static final int CUSTOM_PRAYER_HOVERS = 3; // Amount of custom prayer hovers we've added
+	public static final int CUSTOM_PRAYER_HOVERS = 3 + 3; // Amount of custom prayer hovers we've added (+3: glow, icon and hover of Reload's Wrath)
 	public static final int PRAYER_INTERFACE_CHILDREN = 80 + BEGIN_READING_PRAYER_INTERFACE + CUSTOM_PRAYER_HOVERS;
 	private static final ReferenceCache models = new ReferenceCache(30);
 	private static final int LUNAR_RUNE_SPRITES_START = 232;
@@ -1111,6 +1111,32 @@ public class Widget {
 				-100);
 		setBounds(28009, 120, 198, 88, rsinterface); // Hover box
 
+		// RELOAD custom prayer. It is not part of the server's PrayerData list, see ReloadPrayer on the server.
+		addPrayer(28010, "Activate @or1@Reload's Wrath", 31, 32, 150, -3, -5, 153, 154, 1, 714, 28012);
+		Sprite wrathIcon = reloadWrathIcon(Client.spriteCache.lookup(154));
+		interfaceCache[28011].enabledSprite = wrathIcon;
+		interfaceCache[28011].disabledSprite = wrathIcon;
+		setBounds(28010, 157, 198, 89, rsinterface); // Prayer glow sprite
+		setBounds(28011, 157, 198, 90, rsinterface); // Prayer sprite
+		addPrayerHover(28012, "Level 80\nReload's Wrath\nIncreases damage with all\nstyles by 30%, and accuracy\nand defence by 25%", -150, -100);
+		setBounds(28012, 157, 198, 91, rsinterface); // Hover box
+	}
+
+	/**
+	 * The Rigour icon recoloured to a fiery orange, so the custom prayer has its own look
+	 * without needing a new sprite in the sprite cache.
+	 */
+	private static Sprite reloadWrathIcon(Sprite source) {
+		Sprite icon = new Sprite(source, source.myWidth, source.myHeight);
+		for (int i = 0; i < icon.myPixels.length; i++) {
+			int pixel = icon.myPixels[i];
+			if (pixel == 0)
+				continue;
+			int brightness = Math.max((pixel >> 16) & 0xff, Math.max((pixel >> 8) & 0xff, pixel & 0xff));
+			int rgb = (brightness << 16) | ((brightness * 90 / 255) << 8) | (brightness * 20 / 255);
+			icon.myPixels[i] = rgb == 0 ? 1 : rgb;
+		}
+		return icon;
 	}
 
 	public static void addPrayer(int ID, String tooltip, int w, int h, int glowSprite, int glowX, int glowY,

@@ -37,6 +37,9 @@ public class DamageFormulas {
         else if (PrayerHandler.isActivated(player, PrayerHandler.PIETY)) {
             prayerBonus = 1.23f;
         }
+        if (com.elvarg.game.content.reloadworld.ReloadPrayer.isActive(player)) {
+            prayerBonus = com.elvarg.game.content.reloadworld.ReloadPrayer.DAMAGE;
+        }
 
         str *= prayerBonus;
         str = (float) Math.floor(str);
@@ -130,6 +133,9 @@ public class DamageFormulas {
                                : 1f;
 
         maxHit *= equipmentBonus;
+        if (com.elvarg.game.content.reloadworld.ReloadPrayer.isActive(c)) {
+            maxHit *= com.elvarg.game.content.reloadworld.ReloadPrayer.DAMAGE;
+        }
 
         // Add spell/target specific gear (tome of fire, salve amulet)
 
@@ -152,6 +158,9 @@ public class DamageFormulas {
         }
         else if (PrayerHandler.isActivated(player, PrayerHandler.RIGOUR)) {
             prayerMod = 1.23f;
+        }
+        if (com.elvarg.game.content.reloadworld.ReloadPrayer.isActive(player)) {
+            prayerMod = com.elvarg.game.content.reloadworld.ReloadPrayer.DAMAGE;
         }
 
         rngStrength *= prayerMod;
