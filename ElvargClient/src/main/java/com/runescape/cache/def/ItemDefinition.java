@@ -58,6 +58,9 @@ public final class ItemDefinition {
     private int model_scale_y;
     private int light_intensity;
     private byte equipped_model_male_translation_y;
+    /** RELOAD custom tint, -1 when the item has none. */
+    private int tintHue = -1;
+    private int tintSaturation;
 
     private ItemDefinition() {
         id = -1;
@@ -100,6 +103,52 @@ public final class ItemDefinition {
 
         cacheIndex = (cacheIndex + 1) % 10;
         ItemDefinition itemDef = cache[cacheIndex];
+
+        // RELOAD custom items are not in the cache: build them from their base item.
+        CustomDefinitions.CustomItem custom = CustomDefinitions.item(itemId);
+        if (custom != null) {
+            itemDef.id = itemId;
+            itemDef.setDefaults();
+            itemDef.copyAll(lookup(custom.baseId));
+            itemDef.name = custom.name;
+            itemDef.tintHue = custom.hue;
+            itemDef.tintSaturation = custom.saturation;
+            if (custom.action != null) {
+                itemDef.actions = new String[]{custom.action, null, null, null, "Drop"};
+            }
+            if (custom.inventoryModel != -1) {
+                // RELOAD's own models carry their own colours: no recolour, no tint.
+                itemDef.inventory_model = custom.inventoryModel;
+                itemDef.equipped_model_male_1 = custom.wornModel;
+                itemDef.equipped_model_female_1 = custom.wornModel;
+                itemDef.equipped_model_male_2 = -1;
+                itemDef.equipped_model_female_2 = -1;
+                itemDef.equipped_model_male_3 = -1;
+                itemDef.equipped_model_female_3 = -1;
+                itemDef.equipped_model_male_translation_y = 0;
+                itemDef.equipped_model_female_translation_y = 0;
+                itemDef.modified_model_colors = null;
+                itemDef.original_model_colors = null;
+                itemDef.model_scale_x = 128;
+                itemDef.model_scale_y = 128;
+                itemDef.model_scale_z = 128;
+                itemDef.modelZoom = custom.zoom;
+                itemDef.rotation_y = custom.rotationY;
+                itemDef.rotation_x = custom.rotationX;
+                itemDef.rotation_z = 0;
+                itemDef.translate_x = custom.translateX;
+                itemDef.translate_yz = custom.translateYZ;
+                itemDef.tintHue = -1;
+            }
+            return itemDef;
+        }
+        // Unknown ids outside the cache get an empty definition instead of crashing.
+        if (itemId >= totalItems) {
+            itemDef.id = itemId;
+            itemDef.setDefaults();
+            return itemDef;
+        }
+
         if (itemId > 0)
             item_data.currentPosition = streamIndices[itemId];
         itemDef.id = itemId;
@@ -379,6 +428,8 @@ public final class ItemDefinition {
                 dialogueModel_.recolor(modified_model_colors[i1], original_model_colors[i1]);
 
         }
+        if (tintHue != -1)
+            dialogueModel_.tint(tintHue, tintSaturation);
         return dialogueModel_;
     }
 
@@ -436,6 +487,8 @@ public final class ItemDefinition {
                 primaryModel_.recolor(modified_model_colors[i1], original_model_colors[i1]);
 
         }
+        if (tintHue != -1)
+            primaryModel_.tint(tintHue, tintSaturation);
         return primaryModel_;
     }
 
@@ -477,6 +530,36 @@ public final class ItemDefinition {
         light_intensity = 0;
         light_mag = 0;
         team = 0;
+        tintHue = -1;
+        tintSaturation = 0;
+    }
+
+    /**
+     * Copies everything from another definition, including the worn models
+     * and the right-click options.
+     */
+    private void copyAll(ItemDefinition copy) {
+        copy(copy);
+        value = copy.value;
+        is_members_only = copy.is_members_only;
+        groundActions = copy.groundActions;
+        actions = copy.actions;
+        name = copy.name;
+        team = copy.team;
+        light_intensity = copy.light_intensity;
+        light_mag = copy.light_mag;
+        equipped_model_male_1 = copy.equipped_model_male_1;
+        equipped_model_male_2 = copy.equipped_model_male_2;
+        equipped_model_male_3 = copy.equipped_model_male_3;
+        equipped_model_male_translation_y = copy.equipped_model_male_translation_y;
+        equipped_model_female_1 = copy.equipped_model_female_1;
+        equipped_model_female_2 = copy.equipped_model_female_2;
+        equipped_model_female_3 = copy.equipped_model_female_3;
+        equipped_model_female_translation_y = copy.equipped_model_female_translation_y;
+        equipped_model_male_dialogue_1 = copy.equipped_model_male_dialogue_1;
+        equipped_model_male_dialogue_2 = copy.equipped_model_male_dialogue_2;
+        equipped_model_female_dialogue_1 = copy.equipped_model_female_dialogue_1;
+        equipped_model_female_dialogue_2 = copy.equipped_model_female_dialogue_2;
     }
 
     private void copy(ItemDefinition copy) {
@@ -537,6 +620,8 @@ public final class ItemDefinition {
                 model.recolor(modified_model_colors[l], original_model_colors[l]);
 
         }
+        if (tintHue != -1)
+            model.tint(tintHue, tintSaturation);
         int lightInt = 64 + light_intensity;
         int lightMag = 768 + light_mag;
         model.light(lightInt, lightMag, -50, -10, -50, true);
@@ -563,6 +648,8 @@ public final class ItemDefinition {
                 model.recolor(modified_model_colors[colorPtr], original_model_colors[colorPtr]);
 
         }
+        if (tintHue != -1)
+            model.tint(tintHue, tintSaturation);
         return model;
     }
 

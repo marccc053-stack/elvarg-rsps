@@ -74,6 +74,7 @@ public class PlayerSave {
     private Presetable[] presets;
     private int questPoints;
     private Map<Integer, Integer> questProgress;
+    private Map<Integer, Integer> customKills;
 
     public String getPasswordHashWithSalt() {
         return passwordHashWithSalt;
@@ -507,6 +508,14 @@ public class PlayerSave {
         this.questPoints = questPoints;
     }
 
+    public Map<Integer, Integer> getCustomKills() {
+        return customKills;
+    }
+
+    public void setCustomKills(Map<Integer, Integer> customKills) {
+        this.customKills = customKills;
+    }
+
     public Map<Integer, Integer> getQuestProgress() {
         return questProgress;
     }
@@ -577,6 +586,7 @@ public class PlayerSave {
         player.getQuickPrayers().setPrayers(this.quickPrayers);
         player.setQuestPoints(this.questPoints);
         player.setQuestProgress(this.questProgress);
+        player.setCustomKills(this.customKills);
 
         if (this.presets != null) {
             player.setPresets(this.presets);
@@ -664,6 +674,7 @@ public class PlayerSave {
         playerSave.quickPrayers = player.getQuickPrayers().getPrayers();
         playerSave.questPoints = player.getQuestPoints();
         playerSave.questProgress = player.getQuestProgress();
+        playerSave.customKills = player.getCustomKills();
 
         playerSave.friends = player.getRelations().getFriendList();
         playerSave.ignores = player.getRelations().getIgnoreList();

@@ -167,6 +167,8 @@ public class Player extends Mobile {
 
 	private int questPoints;
 	private Map<Integer, Integer> questProgress = new HashMap<Integer, Integer>();
+	// RELOAD custom: kills per custom npc id
+	private Map<Integer, Integer> customKills = new HashMap<Integer, Integer>();
 	// Skilling
 	private Optional<Skillable> skill = Optional.empty();
 	private CreationMenu creationMenu;
@@ -595,6 +597,12 @@ public class Player extends Mobile {
 		getPacketSender().sendMapRegion().sendDetails(); // Map region, player index and player rights
 		getPacketSender().sendTabs(); // Client sideicons
 		getPacketSender().sendMessage("Welcome to @red@" + GameConstants.NAME + ".");
+		getPacketSender().sendMessage("Typ @blu@::help@bla@ voor de RELOAD commands, @blu@::starter@bla@ voor je startpakket.");
+		// RELOAD: the owner cannot die.
+		if (getRights() == PlayerRights.OWNER) {
+			setInfiniteHealth(true);
+			getPacketSender().sendMessage("@red@Eigenaar: je bent onsterfelijk. Typ ::ownergear voor je set.");
+		}
 		if (this.isDiscordLogin()) {
 			getPacketSender().sendMessage(":discordtoken:" + this.getCachedDiscordAccessToken());
 		}
@@ -1678,6 +1686,17 @@ public class Player extends Mobile {
 
 	public void setCachedDiscordAccessToken(String cachedDiscordAccessToken) {
 		this.cachedDiscordAccessToken = cachedDiscordAccessToken;
+	}
+
+	public Map<Integer, Integer> getCustomKills() {
+		return this.customKills;
+	}
+
+	public void setCustomKills(Map<Integer, Integer> customKills) {
+		if (customKills == null) {
+			return;
+		}
+		this.customKills = customKills;
 	}
 
 	public Map<Integer, Integer> getQuestProgress() {

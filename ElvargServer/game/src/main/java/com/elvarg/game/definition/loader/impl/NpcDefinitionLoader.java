@@ -18,6 +18,9 @@ public class NpcDefinitionLoader extends DefinitionLoader {
             NpcDefinition.definitions.put(def.getId(), def);
         }
         reader.close();
+
+        // RELOAD custom npcs and their spawns
+        com.elvarg.game.content.custom.CustomContent.registerNpcs();
     }
 
     @Override

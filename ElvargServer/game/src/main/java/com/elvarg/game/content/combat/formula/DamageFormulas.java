@@ -85,7 +85,7 @@ public class DamageFormulas {
     public static int calculateMaxMeleeHit(Mobile entity) {
         if (entity.isPlayer()) {
             Player player = (Player) entity;
-            return maximumMeleeHitDpsCalc(player);
+            return com.elvarg.game.content.custom.CustomProgress.boostDamage(player, maximumMeleeHitDpsCalc(player));
         }
         NPC npc = (NPC) entity;
         float maxHit = npc.getCurrentDefinition().getMaxHit();
@@ -133,6 +133,9 @@ public class DamageFormulas {
 
         // Add spell/target specific gear (tome of fire, salve amulet)
 
+        if (c.isPlayer()) {
+            return com.elvarg.game.content.custom.CustomProgress.boostDamage(c.getAsPlayer(), (int) Math.floor(maxHit));
+        }
         return (int) Math.floor(maxHit);
     }
 
@@ -206,6 +209,6 @@ public class DamageFormulas {
 
         Player player = (Player) entity;
 
-        return maximumRangeHitDpsCalc(player);
+        return com.elvarg.game.content.custom.CustomProgress.boostDamage(player, maximumRangeHitDpsCalc(player));
     }
 }

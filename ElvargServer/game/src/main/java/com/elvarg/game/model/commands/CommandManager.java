@@ -35,6 +35,25 @@ public class CommandManager {
         put(new MaxHit(), "maxhit", "mh");
 
         /**
+         * RELOAD custom commands
+         */
+        put(new TiersCommand(), "tiers", "zones", "kc");
+        put(new TierTeleportCommand(), "t1", "t2", "t3", "t4", "t5");
+        put(new DropRateCommand(), "dr", "droprate");
+        put(new TierTeleportCommand(), "t6");
+        put(new UpgradeCommand(), "upgrade");
+        put(new PrestigeCommand(), "prestige");
+        put(new CollectionLogCommand(), "log", "collectie");
+        put(new RaidCommand(), "raid");
+        put(new ShardShopCommand(), "shop", "scherven");
+        put(new HomeCommand(), "home");
+        put(new StarterCommand(), "starter");
+        put(new HelpCommand(), "help", "commands");
+        put(new OwnerGearCommand(), "ownergear");
+        put(new CollectCommand(), "collect", "collector");
+        put(new InstanceCommand(), "instance", "i", "leave");
+
+        /**
          * Donators Command
          */
         put(new Yell(), "yell");

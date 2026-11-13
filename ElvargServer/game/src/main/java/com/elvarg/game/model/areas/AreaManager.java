@@ -33,6 +33,7 @@ public class AreaManager {
         areas.add(PestControl.GAME_AREA);
         areas.add(PestControl.NOVICE_BOAT_AREA);
         areas.add(PestControl.OUTPOST_AREA);
+        areas.add(new com.elvarg.game.content.custom.CustomZoneArea());
     }
 
     /**
@@ -55,7 +56,10 @@ public class AreaManager {
         }
 
         Area newArea = get(position);
-        if (area == null || area != newArea) {
+        if (area instanceof com.elvarg.game.model.areas.impl.PrivateArea) {
+            // RELOAD: a private area (raid, instance) is not in the list above.
+            // Keep it for as long as the character stands inside its boundaries.
+        } else if (area == null || area != newArea) {
             area = newArea;
             if (area != null) {
                 area.enter(c);

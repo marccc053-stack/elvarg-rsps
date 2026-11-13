@@ -18,6 +18,9 @@ public class ItemDefinitionLoader extends DefinitionLoader {
             ItemDefinition.definitions.put(def.getId(), def);
         }
         reader.close();
+
+        // RELOAD custom items
+        com.elvarg.game.content.custom.CustomContent.registerItems();
     }
 
     @Override

@@ -72,6 +72,13 @@ public class EquipPacketListener implements PacketExecutor {
 			player.getPacketSender().sendInterfaceRemoval();
 		}
 
+		// RELOAD: the owner set is for owners only.
+		if (com.elvarg.game.content.custom.CustomItems.isOwnerItem(id)
+				&& !com.elvarg.game.content.custom.CustomItems.isOwner(player)) {
+			player.getPacketSender().sendMessage("Alleen de eigenaar van RELOAD kan dit dragen.");
+			return;
+		}
+
 		// Stop skilling..
 		player.getSkillManager().stopSkillable();
 
@@ -210,4 +217,4 @@ public class EquipPacketListener implements PacketExecutor {
 				break;
 		}
 	}
-}
+}

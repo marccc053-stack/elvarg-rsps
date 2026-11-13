@@ -1,69 +1,76 @@
 [
+  { "facing": "SOUTH", "radius": 0, "description": "Home bankier", "id": 7677, "position": { "x": 3092, "y": 3510, "z": 0 } },
+  { "facing": "SOUTH", "radius": 0, "description": "Home general store", "id": 512, "position": { "x": 3092, "y": 3506, "z": 0 } },
+  { "facing": "SOUTH", "radius": 0, "description": "Home voedsel", "id": 4921, "position": { "x": 3094, "y": 3506, "z": 0 } },
+  { "facing": "SOUTH", "radius": 0, "description": "Home wapenkamer", "id": 2460, "position": { "x": 3096, "y": 3506, "z": 0 } },
+  { "facing": "SOUTH", "radius": 0, "description": "Home ranged", "id": 6059, "position": { "x": 3098, "y": 3506, "z": 0 } },
+  { "facing": "SOUTH", "radius": 0, "description": "Home magic", "id": 3309, "position": { "x": 3100, "y": 3506, "z": 0 } },
+  { "facing": "SOUTH", "radius": 0, "description": "Home pure shop", "id": 221, "position": { "x": 3102, "y": 3506, "z": 0 } },
   {
     "facing": "NORTH",
     "radius": 0,
+    "description": "Pest Control (Novice) Squire",
     "id": 1771,
     "position": {
       "x": 2657,
       "y": 2637,
       "z": 0
-    },
-    "description": "Pest Control (Novice) Squire"
+    }
   },
   {
     "facing": "NORTH",
     "radius": 0,
+    "description": "Pest Control (Intermediate) Squire",
     "id": 1772,
     "position": {
       "x": 2644,
       "y": 2641,
       "z": 0
-    },
-    "description": "Pest Control (Intermediate) Squire"
+    }
   },
   {
     "facing": "SOUTH",
     "radius": 0,
+    "description": "Pest Control (Veteran) Squire",
     "id": 1773,
     "position": {
       "x": 2638,
       "y": 2656,
       "z": 0
-    },
-    "description": "Pest Control (Veteran) Squire"
+    }
   },
   {
     "facing": "WEST",
     "radius": 2,
+    "description": "Pest Control (Ranged Shop)",
     "id": 1765,
     "position": {
       "x": 2665,
       "y": 2660,
       "z": 0
-    },
-    "description": "Pest Control (Ranged Shop)"
+    }
   },
   {
     "facing": "NORTH",
     "radius": 2,
+    "description": "Pest Control (agic Shop)",
     "id": 1767,
     "position": {
       "x": 2658,
       "y": 2654,
       "z": 0
-    },
-    "description": "Pest Control (agic Shop)"
+    }
   },
   {
     "facing": "NORTH",
     "radius": 2,
+    "description": "Pest Control (Exchange Shop)",
     "id": 1757,
     "position": {
       "x": 2662,
       "y": 2649,
       "z": 0
-    },
-    "description": "Pest Control (Exchange Shop)"
+    }
   },
   {
     "facing": "SOUTH",
@@ -3194,6 +3201,17 @@
     "position": {
       "x": 2441,
       "y": 3089,
+      "z": 0
+    }
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "description": "Unknown area G.L.O. Caranock",
+    "id": 1460,
+    "position": {
+      "x": 3089,
+      "y": 3524,
       "z": 0
     }
   }

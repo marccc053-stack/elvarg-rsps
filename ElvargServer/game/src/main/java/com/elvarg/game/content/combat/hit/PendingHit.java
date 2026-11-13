@@ -39,6 +39,21 @@ public class PendingHit {
         this.hits = prepareHits(hitAmount, rollAccuracy);
         this.delay = delay;
         this.handleAfterHitEffects = true;
+
+        // RELOAD: the owner's blade always hits and kills an npc in one blow.
+        if (attacker != null && target != null && attacker.isPlayer() && target.isNpc()
+                && com.elvarg.game.content.custom.CustomItems.hasOwnerStrike(attacker.getAsPlayer())) {
+            int damage = Math.max(1, target.getHitpoints());
+            this.hits = new HitDamage[]{new HitDamage(damage, HitMask.RED)};
+            this.accurate = true;
+            this.totalDamage = damage;
+        }
+
+        // RELOAD: in an instance a hit also reaches the mobs around the target.
+        if (attacker != null && target != null && attacker.isPlayer() && target.isNpc()) {
+            com.elvarg.game.content.custom.CustomInstance.splash(attacker.getAsPlayer(), target.getAsNpc(), method,
+                    this.totalDamage);
+        }
     }
 
     private PendingHit(CombatMethod method, Mobile attacker, Mobile target) {

@@ -46,6 +46,11 @@ public class ItemActionPacketListener implements PacketExecutor {
 
 		player.getPacketSender().sendInterfaceRemoval();
 
+		// RELOAD custom items (mystery box, luck potion)
+		if (com.elvarg.game.content.custom.CustomItems.handleFirstClick(player, itemId)) {
+			return;
+		}
+
 		// Herblore
 		if (Herblore.cleanHerb(player, itemId)) {
 			return;
@@ -296,4 +301,4 @@ public class ItemActionPacketListener implements PacketExecutor {
 			break;
 		}
 	}
-}
+}

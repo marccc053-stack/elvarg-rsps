@@ -51,6 +51,60 @@ public class NpcDefinition {
     private int combatFollowDistance;
 
     /**
+     * Creates a custom definition based on an existing npc. Size and
+     * animations come from the base; combat values are replaced.
+     */
+    public static NpcDefinition customCopy(NpcDefinition base, int id, String name, int combatLevel, int hitpoints,
+                                           int maxHit, int respawn, boolean aggressive, int[] stats) {
+        NpcDefinition def = new NpcDefinition();
+        def.id = id;
+        def.name = name;
+        def.examine = name + ".";
+        def.size = base.size;
+        def.walkRadius = base.walkRadius;
+        def.attackable = true;
+        def.retreats = false;
+        def.aggressive = aggressive;
+        def.aggressiveTolerance = base.aggressiveTolerance;
+        def.poisonous = false;
+        def.fightsBack = true;
+        def.respawn = respawn;
+        def.maxHit = maxHit;
+        def.hitpoints = hitpoints;
+        def.attackSpeed = base.attackSpeed;
+        def.attackAnim = base.attackAnim;
+        def.defenceAnim = base.defenceAnim;
+        def.deathAnim = base.deathAnim;
+        def.combatLevel = combatLevel;
+        def.stats = stats;
+        def.slayerLevel = 1;
+        def.combatFollowDistance = base.combatFollowDistance;
+        return def;
+    }
+
+    /**
+     * Creates the definition of an instance mob: like a normal custom npc,
+     * but one tile big so a whole grid of them fits in the arena.
+     */
+    public static NpcDefinition customInstanceMob(NpcDefinition base, int id, String name, int combatLevel,
+                                                  int hitpoints, int maxHit, int[] stats) {
+        NpcDefinition def = customCopy(base, id, name, combatLevel, hitpoints, maxHit, -1, true, stats);
+        def.size = 1;
+        return def;
+    }
+
+    /**
+     * Creates the definition of a custom pet: one tile, cannot be attacked.
+     */
+    public static NpcDefinition customPet(NpcDefinition base, int id, String name) {
+        NpcDefinition def = customCopy(base, id, name, 0, 10, 0, -1, false, DEFAULT_STATS);
+        def.size = 1;
+        def.attackable = false;
+        def.fightsBack = false;
+        return def;
+    }
+
+    /**
      * Attempts to get the {@link ItemDefinition} for the
      * given item.
      *

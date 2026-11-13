@@ -54,6 +54,56 @@ public class ItemDefinition {
     private int[] requirements;
 
     /**
+     * Creates a custom definition based on an existing one. Everything
+     * (animations, weapon interface, equipment slot) is taken from the base;
+     * only the id, name, examine, value and bonuses are replaced.
+     */
+    public static ItemDefinition customCopy(ItemDefinition base, int id, String name, String examine, int value,
+                                            int[] bonuses) {
+        ItemDefinition def = new ItemDefinition();
+        def.id = id;
+        def.name = name;
+        def.examine = examine;
+        def.weaponInterface = base.weaponInterface;
+        def.equipmentType = base.equipmentType;
+        def.doubleHanded = base.doubleHanded;
+        def.stackable = false;
+        def.tradeable = true;
+        def.dropable = true;
+        def.sellable = false;
+        def.noted = false;
+        def.value = value;
+        def.bloodMoneyValue = 0;
+        def.highAlch = 0;
+        def.lowAlch = 0;
+        def.dropValue = value;
+        def.noteId = -1;
+        def.blockAnim = base.blockAnim;
+        def.standAnim = base.standAnim;
+        def.walkAnim = base.walkAnim;
+        def.runAnim = base.runAnim;
+        def.standTurnAnim = base.standTurnAnim;
+        def.turn180Anim = base.turn180Anim;
+        def.turn90CWAnim = base.turn90CWAnim;
+        def.turn90CCWAnim = base.turn90CCWAnim;
+        def.weight = base.weight;
+        def.bonuses = bonuses;
+        def.requirements = null;
+        return def;
+    }
+
+    /**
+     * Same as {@link #customCopy(ItemDefinition, int, String, String, int, int[])}
+     * for items that are not equipment: currency, boxes, pets.
+     */
+    public static ItemDefinition customMisc(ItemDefinition base, int id, String name, String examine, int value,
+                                            boolean stackable) {
+        ItemDefinition def = customCopy(base, id, name, examine, value, base.bonuses);
+        def.stackable = stackable;
+        return def;
+    }
+
+    /**
      * Attempts to get the {@link ItemDefinition} for the
      * given item.
      *

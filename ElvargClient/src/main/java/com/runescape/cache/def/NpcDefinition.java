@@ -47,6 +47,9 @@ public final class NpcDefinition {
 	public boolean priorityRender;
 	public int[] modelId;
 	public int id;
+	/** RELOAD custom tint, -1 when the npc has none. */
+	public int tintHue = -1;
+	public int tintSaturation;
 
 	public NpcDefinition() {
 		turn90CCWAnimIndex = -1;
@@ -80,10 +83,34 @@ public final class NpcDefinition {
 
 		anInt56 = (anInt56 + 1) % 20;
 		NpcDefinition definition = cache[anInt56] = new NpcDefinition();
-		dataBuf.currentPosition = offsets[id];
+		// RELOAD custom npcs are not in the cache: read the base npc instead.
+		CustomDefinitions.CustomNpc custom = CustomDefinitions.npc(id);
+		int dataId = custom != null ? custom.baseId : id;
+		if (dataId < 0 || dataId >= TOTAL_NPCS)
+			dataId = 0;
+		dataBuf.currentPosition = offsets[dataId];
 		definition.interfaceType = id;
 		definition.id = id;
 		definition.readValues(dataBuf);
+		if (custom != null) {
+			definition.name = custom.name;
+			definition.combatLevel = custom.combatLevel;
+			definition.tintHue = custom.hue;
+			definition.tintSaturation = custom.saturation;
+			definition.scaleXZ = definition.scaleXZ * custom.scale / 128;
+			definition.scaleY = definition.scaleY * custom.scale / 128;
+			if (custom.pet) {
+				definition.size = 1;
+				definition.actions = new String[]{null, null, "Pick-up", null, null};
+			}
+			if (custom.oneTile) {
+				definition.size = 1;
+			}
+			if (custom.talkAction != null) {
+				definition.actions = new String[]{custom.talkAction, null, null, null, null};
+			}
+			return definition;
+		}
 
 		switch (id) {
 		// Pets
@@ -277,6 +304,8 @@ public final class NpcDefinition {
 				model.recolor(recolourOriginal[index], recolourTarget[index]);
 
 		}
+		if (tintHue != -1)
+			model.tint(tintHue, tintSaturation);
 		return model;
 	}
 
@@ -327,6 +356,8 @@ public final class NpcDefinition {
 					model.recolor(recolourOriginal[k1], recolourTarget[k1]);
 
 			}
+			if (tintHue != -1)
+				model.tint(tintHue, tintSaturation);
 			model.skin();
 			model.scale(132, 132, 132);
 			model.light(84 + lightModifier, 1000 + shadowModifier, -90, -580, -90, true);
@@ -378,6 +409,8 @@ public final class NpcDefinition {
 					model.recolor(recolourOriginal[index], recolourTarget[index]);
 
 			}
+			if (tintHue != -1)
+				model.tint(tintHue, tintSaturation);
 			model.skin();
 			model.light(64 + lightModifier, 850 + shadowModifier, -30, -50, -30, true);
 			modelCache.put(model, interfaceType);

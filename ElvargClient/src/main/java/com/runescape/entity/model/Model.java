@@ -119,6 +119,38 @@ public class Model extends Renderable {
             aBoolean1618 = !aBoolean1618;
     }
 
+    /**
+     * Builds a model straight from vertex and face data instead of from
+     * the cache. Used for the RELOAD custom models (see CustomModels).
+     *
+     * @param vertexSkin   animation label for every vertex, -1 for none
+     * @param triangleSkin animation label for every face, -1 for none
+     */
+    public static Model custom(int[] x, int[] y, int[] z, int[] a, int[] b, int[] c, short[] colours,
+                               int vertexSkin, int triangleSkin, int priority) {
+        Model model = new Model(true);
+        model.numVertices = x.length;
+        model.vertexX = x;
+        model.vertexY = y;
+        model.vertexZ = z;
+        model.numTriangles = a.length;
+        model.facePointA = a;
+        model.facePointB = b;
+        model.facePointC = c;
+        model.triangleColours = colours;
+        model.face_priority = (byte) priority;
+        model.numberOfTexturesFaces = 0;
+        if (vertexSkin != -1) {
+            model.vertexVSkin = new int[x.length];
+            java.util.Arrays.fill(model.vertexVSkin, vertexSkin);
+        }
+        if (triangleSkin != -1) {
+            model.triangleTSkin = new int[a.length];
+            java.util.Arrays.fill(model.triangleTSkin, triangleSkin);
+        }
+        return model;
+    }
+
     public Model(int length, Model[] model_segments) {
         try {
             aBoolean1618 = true;
@@ -644,6 +676,8 @@ public class Model extends Renderable {
     }
 
     public static Model getModel(int file) {
+        if (CustomModels.isCustom(file))
+            return CustomModels.build(file);
         if (modelHeader == null)
             return null;
 
@@ -657,6 +691,8 @@ public class Model extends Renderable {
     }
 
     public static boolean isCached(int file) {
+        if (CustomModels.isCustom(file))
+            return true;
         if (modelHeader == null)
             return false;
 
@@ -2277,6 +2313,21 @@ public class Model extends Renderable {
                     triangleColours[face] = (short) replace;
     }
 
+    /**
+     * Gives every coloured face the same hue and saturation while keeping
+     * its own brightness. Used for the RELOAD custom items and npcs.
+     *
+     * @param hue        0-63
+     * @param saturation 0-7
+     */
+    public void tint(int hue, int saturation) {
+        if (triangleColours == null)
+            return;
+        int base = ((hue & 63) << 10) | ((saturation & 7) << 7);
+        for (int face = 0; face < numTriangles; face++)
+            triangleColours[face] = (short) (base | (triangleColours[face] & 127));
+    }
+
     public void retexture(short found, short replace) {
         if (texture != null)
             for (int face = 0; face < numTriangles; face++)
@@ -3038,4 +3089,4 @@ public class Model extends Renderable {
             return false;
         return i <= x_a || i <= x_b || i <= x_c;
     }
-}
+}

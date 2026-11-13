@@ -44,10 +44,18 @@ public class NPCDropGenerator {
      * @param npc
      */
     public static void start(Player player, NPC npc) {
+        // RELOAD custom npcs have their own kill count and loot
+        if (com.elvarg.game.content.custom.CustomDrops.handleKill(player, npc)) {
+            return;
+        }
         Optional<NpcDropDefinition> def = NpcDropDefinition.get(npc.getId());
         if (def.isPresent()) {
             NPCDropGenerator gen = new NPCDropGenerator(player, def.get());
             for (Item item : gen.getDropList()) {
+            	// RELOAD auto collector
+            	if (com.elvarg.game.content.custom.CustomItems.collect(player, item)) {
+            		continue;
+            	}
             	if (!item.getDefinition().isStackable()) {
             		for (int i = 0; i < item.getAmount(); i++) {
             			ItemOnGroundManager.register(player, new Item(item.getId(), 1), npc.getLocation());

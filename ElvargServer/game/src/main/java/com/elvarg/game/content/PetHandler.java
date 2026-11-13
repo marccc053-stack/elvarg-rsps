@@ -327,7 +327,10 @@ public class PetHandler {
                 8000), BLOOD_RIFT_GUARDIAN(7350,
                 7337, 20691, -1,
                 Skill.RUNECRAFTING,
-                8000);
+                8000),
+        // RELOAD custom pets (see com.elvarg.game.content.custom.CustomItems)
+        RELOAD_BRIX(15100, 0, 30110, -1), RELOAD_GLOEDJE(15101, 0, 30111, -1), RELOAD_MINI_RELOADER(15102, 0,
+                30112, -1), RELOAD_TWEELING(15103, 0, 30113, -1);
 
         public static final Set<Pet> SKILLING_PETS = ImmutableSet.of(HERON, BEAVER, GREY_CHINCHOMPA, RED_CHINCHOMPA,
                 BLACK_CHINCHOMPA, ROCK_GOLEM, GIANT_SQUIRREL, TANGLEROOT, ROCKY);
