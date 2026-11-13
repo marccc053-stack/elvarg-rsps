@@ -4555,6 +4555,7 @@ public class Client extends GameApplet {
             Frame.animationlist = new Frame[3000][0];
 
             Model.init();
+            com.runescape.entity.model.ReloadModels.load();
             drawLoadingText(80, "Unpacking media");
 
             /*byte soundData[] = soundArchive.readFile("sounds.dat");

@@ -18,9 +18,9 @@ public class ShopDefinitionLoader extends DefinitionLoader {
         for (ShopDefinition def : defs) {
             if (def.getCurrency() != null) {
                 // Shop JSON has "currency" property defined
-                ShopManager.shops.put(def.getId(), new Shop(def.getId(), def.getName(), def.getOriginalStock(), def.getCurrency().get()));
+                ShopManager.shops.put(def.getId(), new Shop(def.getId(), def.getName(), com.elvarg.game.content.reloadworld.ReloadRules.filterStock(def.getOriginalStock()), def.getCurrency().get()));
             } else {
-                ShopManager.shops.put(def.getId(), new Shop(def.getId(), def.getName(), def.getOriginalStock()));
+                ShopManager.shops.put(def.getId(), new Shop(def.getId(), def.getName(), com.elvarg.game.content.reloadworld.ReloadRules.filterStock(def.getOriginalStock())));
             }
 
         }

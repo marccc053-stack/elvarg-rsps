@@ -19,6 +19,7 @@ DEFS = os.path.join(ROOT, 'ElvargServer', 'data', 'definitions')
 
 # bonus order: stab, slash, crush, magic, range | def stab, slash, crush, magic, range | str, ranged str, magic dmg, prayer
 EMBER, MAGMA, VENOM, TIDAL, RELOAD = (5, 6, 9), (0, 7, 6), (21, 6, 15), (36, 6, 44), (53, 6, 8)   # (hue, sat, accent hue)
+DRIFT = (40, 2, 8)
 
 # id, constant, name, base item, multiplier on positive bonuses, extra bonuses {index: add}, tint, examine
 ITEMS = [
@@ -47,7 +48,29 @@ ITEMS = [
 
     (30040, 'RELOAD_CAPE', 'Reload cape', 6568, 2.0, {10: 6, 11: 4, 12: 3, 13: 4}, RELOAD, 'Proof that all three bosses fell.'),
     (30041, 'RELOAD_AMULET', 'Reload amulet', 6585, 1.5, {}, RELOAD, 'It hums with stored power.'),
+
+    # starter tier, level 1: every new player gets it (ReloadRules.giveStarterKit) and sparring giants drop it
+    (30050, 'DRIFT_SWORD', 'Drift sword', 1323, 1.6, {}, DRIFT, 'Washed up on the beach, still sharp.'),
+    (30051, 'DRIFT_HELM', 'Drift helm', 1153, 1.6, {}, DRIFT, 'Washed up on the beach.'),
+    (30052, 'DRIFT_PLATEBODY', 'Drift platebody', 1115, 1.6, {}, DRIFT, 'Washed up on the beach.'),
+    (30053, 'DRIFT_PLATELEGS', 'Drift platelegs', 1067, 1.6, {}, DRIFT, 'Washed up on the beach.'),
+    (30054, 'DRIFT_SHIELD', 'Drift shield', 1175, 1.6, {}, DRIFT, 'Washed up on the beach.'),
+    (30055, 'DRIFT_BOW', 'Drift bow', 841, 2.5, {}, DRIFT, 'Bent driftwood and a fishing line.'),
+    (30056, 'DRIFT_STAFF', 'Drift staff', 1381, 1.6, {}, DRIFT, 'Salt-stained, but it still channels.'),
+    (30057, 'DRIFT_COWL', 'Drift cowl', 1167, 2.0, {}, DRIFT, 'Stiff with salt.'),
+    (30058, 'DRIFT_BODY', 'Drift body', 1129, 2.0, {}, DRIFT, 'Stiff with salt.'),
+    (30059, 'DRIFT_CHAPS', 'Drift chaps', 1095, 2.0, {}, DRIFT, 'Stiff with salt.'),
+    (30060, 'DRIFT_HAT', 'Drift hat', 579, 3.0, {3: 2, 8: 2}, DRIFT, 'Stiff with salt.'),
+    (30061, 'DRIFT_ROBE', 'Drift robe', 577, 3.0, {3: 3, 8: 3}, DRIFT, 'Stiff with salt.'),
+    (30062, 'DRIFT_SKIRT', 'Drift skirt', 1011, 1.0, {3: 4, 8: 4}, DRIFT, 'Stiff with salt.'),
 ]
+
+# Real custom models from a model pack. Put the files in ElvargClient/Cache/reload_models/<model id>.dat
+# and add one line per item here. The item then uses these models and is no longer tinted.
+# item id: (inventory model, male worn model, female worn model, zoom, rotation x, rotation y, offset x, offset y)
+MODELS = {
+    # 30014: (65000, 65001, 65001, 840, 280, 0, -2, 56),
+}
 
 # id, constant, name, base npc, tint, scale (128 = normal), overrides for the server definition, client size override
 NPCS = [
@@ -70,10 +93,12 @@ N = {c: i for i, c, *_ in NPCS}
 D = lambda item, lo=1, hi=1: {"itemId": item, "minAmount": lo, "maxAmount": hi}
 COINS, BONES, BIG_BONES, DRAGON_BONES, SHARK, SUPER_RESTORE, PRAYER_POT = 995, 526, 532, 536, 385, 3024, 2434
 EMBER_SET = [D(I[c]) for c in ('EMBER_HELM', 'EMBER_PLATEBODY', 'EMBER_PLATELEGS', 'EMBER_KITESHIELD', 'EMBER_SCIMITAR')]
+DRIFT_SET = [D(i) for i, c, *_ in ITEMS if c.startswith('DRIFT_')]
 JEWEL = [D(I['RELOAD_AMULET']), D(I['RELOAD_CAPE'])]
 DROPS = [
     {"npcIds": [N['SPARRING_GIANT']], "rdtChance": 0, "alwaysDrops": [D(BONES)],
-     "commonDrops": [D(COINS, 50, 400)], "veryRareDrops": EMBER_SET},
+     "commonDrops": [D(COINS, 50, 400)], "uncommonDrops": DRIFT_SET + [D(882, 20, 60), D(556, 20, 60), D(558, 20, 60), D(333, 1, 2)],
+     "veryRareDrops": EMBER_SET},
     {"npcIds": [N['SPARRING_BRUTE']], "rdtChance": 0, "alwaysDrops": [D(BIG_BONES)],
      "commonDrops": [D(COINS, 300, 1500)], "uncommonDrops": [D(SHARK, 1, 2)], "rareDrops": EMBER_SET},
     {"npcIds": [N['EMBER_DEMON']], "rdtChance": 64, "alwaysDrops": [D(BIG_BONES)],
@@ -136,6 +161,9 @@ def main():
          '    /** {id, base id, hue, saturation, accent hue} */',
          '    private static final int[][] ITEMS = {']
     c += ['        {%d, %d, %d, %d, %d},' % (i, b, t[0], t[1], t[2]) for i, _, _, b, _, _, t, _ in ITEMS]
+    c += ['    };', '', '    /** Items with real custom models: {id, inventory, male, female, zoom, rotation x, rotation y, offset x, offset y} */',
+          '    private static final int[][] ITEM_MODELS = {']
+    c += ['        {%d, %s},' % (i, ', '.join(str(v) for v in m)) for i, m in sorted(MODELS.items())]
     c += ['    };', '    private static final String[] ITEM_NAMES = {'] + ['        "%s",' % n for _, _, n, *_ in ITEMS]
     c += ['    };', '', '    /** {id, base id, hue, saturation, accent hue, scale, combat level, size or -1} */',
           '    private static final int[][] NPCS = {']
@@ -171,6 +199,22 @@ def main():
         def.tintHue = ITEMS[i][2];
         def.tintSaturation = ITEMS[i][3];
         def.tintAccentHue = ITEMS[i][4];
+        int m = find(ITEM_MODELS, def.id);
+        if (m != -1) {
+            def.tintHue = -1;
+            def.modified_model_colors = null;
+            def.original_model_colors = null;
+            def.inventory_model = ITEM_MODELS[m][1];
+            def.equipped_model_male_1 = ITEM_MODELS[m][2];
+            def.equipped_model_female_1 = ITEM_MODELS[m][3];
+            def.equipped_model_male_2 = -1;
+            def.equipped_model_female_2 = -1;
+            def.modelZoom = ITEM_MODELS[m][4];
+            def.rotation_x = ITEM_MODELS[m][5];
+            def.rotation_y = ITEM_MODELS[m][6];
+            def.translate_x = ITEM_MODELS[m][7];
+            def.translate_yz = ITEM_MODELS[m][8];
+        }
     }
 
     public static boolean isNpc(int id) {

@@ -29,6 +29,23 @@ public final class ReloadCustoms {
         {30033, 11791, 36, 6, 44},
         {30040, 6568, 53, 6, 8},
         {30041, 6585, 53, 6, 8},
+        {30050, 1323, 40, 2, 8},
+        {30051, 1153, 40, 2, 8},
+        {30052, 1115, 40, 2, 8},
+        {30053, 1067, 40, 2, 8},
+        {30054, 1175, 40, 2, 8},
+        {30055, 841, 40, 2, 8},
+        {30056, 1381, 40, 2, 8},
+        {30057, 1167, 40, 2, 8},
+        {30058, 1129, 40, 2, 8},
+        {30059, 1095, 40, 2, 8},
+        {30060, 579, 40, 2, 8},
+        {30061, 577, 40, 2, 8},
+        {30062, 1011, 40, 2, 8},
+    };
+
+    /** Items with real custom models: {id, inventory, male, female, zoom, rotation x, rotation y, offset x, offset y} */
+    private static final int[][] ITEM_MODELS = {
     };
     private static final String[] ITEM_NAMES = {
         "Ember helm",
@@ -52,6 +69,19 @@ public final class ReloadCustoms {
         "Tidal staff",
         "Reload cape",
         "Reload amulet",
+        "Drift sword",
+        "Drift helm",
+        "Drift platebody",
+        "Drift platelegs",
+        "Drift shield",
+        "Drift bow",
+        "Drift staff",
+        "Drift cowl",
+        "Drift body",
+        "Drift chaps",
+        "Drift hat",
+        "Drift robe",
+        "Drift skirt",
     };
 
     /** {id, base id, hue, saturation, accent hue, scale, combat level, size or -1} */
@@ -99,6 +129,22 @@ public final class ReloadCustoms {
         def.tintHue = ITEMS[i][2];
         def.tintSaturation = ITEMS[i][3];
         def.tintAccentHue = ITEMS[i][4];
+        int m = find(ITEM_MODELS, def.id);
+        if (m != -1) {
+            def.tintHue = -1;
+            def.modified_model_colors = null;
+            def.original_model_colors = null;
+            def.inventory_model = ITEM_MODELS[m][1];
+            def.equipped_model_male_1 = ITEM_MODELS[m][2];
+            def.equipped_model_female_1 = ITEM_MODELS[m][3];
+            def.equipped_model_male_2 = -1;
+            def.equipped_model_female_2 = -1;
+            def.modelZoom = ITEM_MODELS[m][4];
+            def.rotation_x = ITEM_MODELS[m][5];
+            def.rotation_y = ITEM_MODELS[m][6];
+            def.translate_x = ITEM_MODELS[m][7];
+            def.translate_yz = ITEM_MODELS[m][8];
+        }
     }
 
     public static boolean isNpc(int id) {

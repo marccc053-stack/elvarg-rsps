@@ -45,6 +45,28 @@ De lijst staat in `content.py`; `python3 tools/reload-world/content.py` schrijft
 
 Nieuwe bestanden: `items_reload.json`, `npc_defs_reload.json`, `npc_drops_reload.json` (server) en `ReloadCustoms.java` (client). Item-id's 30000+, NPC-id's 15000+.
 
+## Alleen eigen gear
+
+`ReloadRules.STANDARD_GEAR_DISABLED` staat aan. Daardoor:
+
+- vallen standaard wapens, harnassen, sieraden en capes niet meer bij monsters en staan ze niet meer in shops (wordt bij het laden uitgefilterd, de json-bestanden zelf blijven ongewijzigd);
+- kun je ze niet meer aantrekken;
+- laden presets niet meer; een nieuw account krijgt de Drift-starterkit (zwaard, harnas, schild, boog, staf, pijlen, runes, eten).
+
+Blijft voorlopig standaard: pijlen en bolts, bijlen, pickaxes en harpoenen, eten, potions en runes. De PvP-bots dragen ook nog standaard gear.
+Zet de constante op `false` om alles terug te krijgen.
+
+| Tier | Voor | Komt van |
+|---|---|---|
+| Drift (grijsblauw, niveau 1) | melee, ranged en magic | starterkit, sparring giants |
+| Ember | melee, niveau 40 | sparring brutes, ember demons, bazen |
+| Magma, Venom, Tidal | melee, ranged, magic eindgame | de drie bazen |
+
+## Echte custom modellen
+
+De client laadt losse modelbestanden uit `ElvargClient/Cache/reload_models/`. Noem elk bestand naar het model-id dat het moet krijgen, bijvoorbeeld `65000.dat` (of `.gz`).
+Koppel daarna in `content.py` onder `MODELS` een item aan zijn modellen en draai `python3 tools/reload-world/content.py`. Dat item gebruikt dan het echte model en wordt niet meer omgekleurd.
+
 ## Home vast instellen
 
 Nieuwe spelers, doodgaan en de home-teleport gebruiken `GameConstants.DEFAULT_LOCATION`. Zet die op:

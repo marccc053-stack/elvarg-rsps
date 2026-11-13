@@ -47,7 +47,7 @@ public class NPCDropGenerator {
         Optional<NpcDropDefinition> def = NpcDropDefinition.get(npc.getId());
         if (def.isPresent()) {
             NPCDropGenerator gen = new NPCDropGenerator(player, def.get());
-            for (Item item : gen.getDropList()) {
+            for (Item item : com.elvarg.game.content.reloadworld.ReloadRules.filterDrops(gen.getDropList())) {
             	if (!item.getDefinition().isStackable()) {
             		for (int i = 0; i < item.getAmount(); i++) {
             			ItemOnGroundManager.register(player, new Item(item.getId(), 1), npc.getLocation());

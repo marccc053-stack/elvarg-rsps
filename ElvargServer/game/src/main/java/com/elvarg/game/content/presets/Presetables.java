@@ -298,6 +298,9 @@ public class Presetables {
 	 *            The preset to load.
 	 */
 	public static void load(Player player, final Presetable preset) {
+		if (com.elvarg.game.content.reloadworld.ReloadRules.blocksPreset(player)) {
+			return;
+		}
 		final int oldCbLevel = player.getSkillManager().getCombatLevel();
 
 		// Close!

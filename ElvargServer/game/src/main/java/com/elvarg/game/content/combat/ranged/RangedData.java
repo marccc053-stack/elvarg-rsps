@@ -263,7 +263,7 @@ public class RangedData {
     public enum RangedWeapon {
 
         LONGBOW(new int[]{839}, new Ammunition[]{Ammunition.BRONZE_ARROW}, RangedWeaponType.LONGBOW),
-        SHORTBOW(new int[]{841}, new Ammunition[]{Ammunition.BRONZE_ARROW}, RangedWeaponType.SHORTBOW),
+        SHORTBOW(new int[]{841, com.elvarg.game.content.reloadworld.ReloadIds.DRIFT_BOW}, new Ammunition[]{Ammunition.BRONZE_ARROW}, RangedWeaponType.SHORTBOW),
         OAK_LONGBOW(new int[]{845}, new Ammunition[]{Ammunition.BRONZE_ARROW, Ammunition.IRON_ARROW, Ammunition.STEEL_ARROW}, RangedWeaponType.LONGBOW),
         OAK_SHORTBOW(new int[]{843}, new Ammunition[]{Ammunition.BRONZE_ARROW, Ammunition.IRON_ARROW, Ammunition.STEEL_ARROW}, RangedWeaponType.SHORTBOW),
         WILLOW_LONGBOW(new int[]{847}, new Ammunition[]{Ammunition.BRONZE_ARROW, Ammunition.IRON_ARROW, Ammunition.STEEL_ARROW, Ammunition.MITHRIL_ARROW}, RangedWeaponType.LONGBOW),

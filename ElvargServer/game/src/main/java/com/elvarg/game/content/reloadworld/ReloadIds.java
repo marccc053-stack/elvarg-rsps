@@ -26,6 +26,19 @@ public final class ReloadIds {
     public static final int TIDAL_STAFF = 30033;
     public static final int RELOAD_CAPE = 30040;
     public static final int RELOAD_AMULET = 30041;
+    public static final int DRIFT_SWORD = 30050;
+    public static final int DRIFT_HELM = 30051;
+    public static final int DRIFT_PLATEBODY = 30052;
+    public static final int DRIFT_PLATELEGS = 30053;
+    public static final int DRIFT_SHIELD = 30054;
+    public static final int DRIFT_BOW = 30055;
+    public static final int DRIFT_STAFF = 30056;
+    public static final int DRIFT_COWL = 30057;
+    public static final int DRIFT_BODY = 30058;
+    public static final int DRIFT_CHAPS = 30059;
+    public static final int DRIFT_HAT = 30060;
+    public static final int DRIFT_ROBE = 30061;
+    public static final int DRIFT_SKIRT = 30062;
 
     public static final int MAGMAROTH = 15000;
     public static final int VENOMQUEEN = 15001;

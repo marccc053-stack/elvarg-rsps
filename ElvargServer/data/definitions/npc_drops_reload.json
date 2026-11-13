@@ -18,6 +18,93 @@
     "maxAmount": 400
    }
   ],
+  "uncommonDrops": [
+   {
+    "itemId": 30050,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30051,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30052,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30053,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30054,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30055,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30056,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30057,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30058,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30059,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30060,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30061,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 30062,
+    "minAmount": 1,
+    "maxAmount": 1
+   },
+   {
+    "itemId": 882,
+    "minAmount": 20,
+    "maxAmount": 60
+   },
+   {
+    "itemId": 556,
+    "minAmount": 20,
+    "maxAmount": 60
+   },
+   {
+    "itemId": 558,
+    "minAmount": 20,
+    "maxAmount": 60
+   },
+   {
+    "itemId": 333,
+    "minAmount": 1,
+    "maxAmount": 2
+   }
+  ],
   "veryRareDrops": [
    {
     "itemId": 30000,
