@@ -1,0 +1,915 @@
+[
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1497,
+    "position": {
+      "x": 4038,
+      "y": 1775,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (lake)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1497,
+    "position": {
+      "x": 4027,
+      "y": 1768,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (lake)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1497,
+    "position": {
+      "x": 4026,
+      "y": 1768,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (lake)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1497,
+    "position": {
+      "x": 4026,
+      "y": 1781,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (lake)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1497,
+    "position": {
+      "x": 4035,
+      "y": 1778,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (lake)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1498,
+    "position": {
+      "x": 4046,
+      "y": 1771,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (sea)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1498,
+    "position": {
+      "x": 4048,
+      "y": 1776,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (sea)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1498,
+    "position": {
+      "x": 4052,
+      "y": 1790,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (sea)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1498,
+    "position": {
+      "x": 4043,
+      "y": 1767,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (sea)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1498,
+    "position": {
+      "x": 3964,
+      "y": 1713,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (sea)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1498,
+    "position": {
+      "x": 3967,
+      "y": 1713,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (sea)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1498,
+    "position": {
+      "x": 3947,
+      "y": 1715,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (sea)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 0,
+    "id": 1498,
+    "position": {
+      "x": 3986,
+      "y": 1714,
+      "z": 0
+    },
+    "description": "RELOAD world: fishing spot (sea)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2005,
+    "position": {
+      "x": 3977,
+      "y": 1849,
+      "z": 0
+    },
+    "description": "RELOAD world: lesser demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2005,
+    "position": {
+      "x": 3958,
+      "y": 1846,
+      "z": 0
+    },
+    "description": "RELOAD world: lesser demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2005,
+    "position": {
+      "x": 3944,
+      "y": 1841,
+      "z": 0
+    },
+    "description": "RELOAD world: lesser demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2005,
+    "position": {
+      "x": 3949,
+      "y": 1829,
+      "z": 0
+    },
+    "description": "RELOAD world: lesser demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2005,
+    "position": {
+      "x": 3999,
+      "y": 1831,
+      "z": 0
+    },
+    "description": "RELOAD world: lesser demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2005,
+    "position": {
+      "x": 3964,
+      "y": 1845,
+      "z": 0
+    },
+    "description": "RELOAD world: lesser demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2025,
+    "position": {
+      "x": 4011,
+      "y": 1864,
+      "z": 0
+    },
+    "description": "RELOAD world: greater demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2025,
+    "position": {
+      "x": 3916,
+      "y": 1847,
+      "z": 0
+    },
+    "description": "RELOAD world: greater demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2025,
+    "position": {
+      "x": 3949,
+      "y": 1865,
+      "z": 0
+    },
+    "description": "RELOAD world: greater demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2025,
+    "position": {
+      "x": 3933,
+      "y": 1863,
+      "z": 0
+    },
+    "description": "RELOAD world: greater demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2025,
+    "position": {
+      "x": 4006,
+      "y": 1850,
+      "z": 0
+    },
+    "description": "RELOAD world: greater demon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 135,
+    "position": {
+      "x": 3941,
+      "y": 1870,
+      "z": 0
+    },
+    "description": "RELOAD world: hellhound"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 135,
+    "position": {
+      "x": 3985,
+      "y": 1882,
+      "z": 0
+    },
+    "description": "RELOAD world: hellhound"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 135,
+    "position": {
+      "x": 3938,
+      "y": 1830,
+      "z": 0
+    },
+    "description": "RELOAD world: hellhound"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 135,
+    "position": {
+      "x": 3921,
+      "y": 1855,
+      "z": 0
+    },
+    "description": "RELOAD world: hellhound"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2075,
+    "position": {
+      "x": 4004,
+      "y": 1842,
+      "z": 0
+    },
+    "description": "RELOAD world: fire giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2075,
+    "position": {
+      "x": 3989,
+      "y": 1883,
+      "z": 0
+    },
+    "description": "RELOAD world: fire giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2075,
+    "position": {
+      "x": 3995,
+      "y": 1841,
+      "z": 0
+    },
+    "description": "RELOAD world: fire giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2075,
+    "position": {
+      "x": 3951,
+      "y": 1842,
+      "z": 0
+    },
+    "description": "RELOAD world: fire giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 247,
+    "position": {
+      "x": 3969,
+      "y": 1877,
+      "z": 0
+    },
+    "description": "RELOAD world: red dragon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 247,
+    "position": {
+      "x": 3945,
+      "y": 1872,
+      "z": 0
+    },
+    "description": "RELOAD world: red dragon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 252,
+    "position": {
+      "x": 3990,
+      "y": 1877,
+      "z": 0
+    },
+    "description": "RELOAD world: black dragon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 252,
+    "position": {
+      "x": 3986,
+      "y": 1861,
+      "z": 0
+    },
+    "description": "RELOAD world: black dragon"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 6609,
+    "position": {
+      "x": 3938,
+      "y": 1848,
+      "z": 0
+    },
+    "description": "RELOAD world: Callisto (west arena)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 6504,
+    "position": {
+      "x": 3994,
+      "y": 1848,
+      "z": 0
+    },
+    "description": "RELOAD world: Venenatis (east arena)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 2,
+    "id": 239,
+    "position": {
+      "x": 3966,
+      "y": 1860,
+      "z": 0
+    },
+    "description": "RELOAD world: King Black Dragon (crater)"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 2805,
+    "position": {
+      "x": 4001,
+      "y": 1799,
+      "z": 0
+    },
+    "description": "RELOAD world: cow"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 2805,
+    "position": {
+      "x": 4002,
+      "y": 1807,
+      "z": 0
+    },
+    "description": "RELOAD world: cow"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 2805,
+    "position": {
+      "x": 4004,
+      "y": 1801,
+      "z": 0
+    },
+    "description": "RELOAD world: cow"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 2805,
+    "position": {
+      "x": 4003,
+      "y": 1783,
+      "z": 0
+    },
+    "description": "RELOAD world: cow"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 2805,
+    "position": {
+      "x": 4000,
+      "y": 1802,
+      "z": 0
+    },
+    "description": "RELOAD world: cow"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2692,
+    "position": {
+      "x": 4003,
+      "y": 1791,
+      "z": 0
+    },
+    "description": "RELOAD world: chicken"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2692,
+    "position": {
+      "x": 4004,
+      "y": 1796,
+      "z": 0
+    },
+    "description": "RELOAD world: chicken"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2692,
+    "position": {
+      "x": 4002,
+      "y": 1808,
+      "z": 0
+    },
+    "description": "RELOAD world: chicken"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2692,
+    "position": {
+      "x": 4006,
+      "y": 1785,
+      "z": 0
+    },
+    "description": "RELOAD world: chicken"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 2692,
+    "position": {
+      "x": 3999,
+      "y": 1801,
+      "z": 0
+    },
+    "description": "RELOAD world: chicken"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 655,
+    "position": {
+      "x": 3953,
+      "y": 1754,
+      "z": 0
+    },
+    "description": "RELOAD world: goblin"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 655,
+    "position": {
+      "x": 3962,
+      "y": 1755,
+      "z": 0
+    },
+    "description": "RELOAD world: goblin"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 655,
+    "position": {
+      "x": 3986,
+      "y": 1759,
+      "z": 0
+    },
+    "description": "RELOAD world: goblin"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 655,
+    "position": {
+      "x": 3948,
+      "y": 1756,
+      "z": 0
+    },
+    "description": "RELOAD world: goblin"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 655,
+    "position": {
+      "x": 3979,
+      "y": 1757,
+      "z": 0
+    },
+    "description": "RELOAD world: goblin"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 2098,
+    "position": {
+      "x": 4029,
+      "y": 1846,
+      "z": 0
+    },
+    "description": "RELOAD world: hill giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 2098,
+    "position": {
+      "x": 4046,
+      "y": 1793,
+      "z": 0
+    },
+    "description": "RELOAD world: hill giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 2098,
+    "position": {
+      "x": 4031,
+      "y": 1797,
+      "z": 0
+    },
+    "description": "RELOAD world: hill giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 2098,
+    "position": {
+      "x": 4041,
+      "y": 1770,
+      "z": 0
+    },
+    "description": "RELOAD world: hill giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 2098,
+    "position": {
+      "x": 4033,
+      "y": 1791,
+      "z": 0
+    },
+    "description": "RELOAD world: hill giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 891,
+    "position": {
+      "x": 4040,
+      "y": 1837,
+      "z": 0
+    },
+    "description": "RELOAD world: moss giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 891,
+    "position": {
+      "x": 4045,
+      "y": 1819,
+      "z": 0
+    },
+    "description": "RELOAD world: moss giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 891,
+    "position": {
+      "x": 4042,
+      "y": 1809,
+      "z": 0
+    },
+    "description": "RELOAD world: moss giant"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 100,
+    "position": {
+      "x": 3919,
+      "y": 1734,
+      "z": 0
+    },
+    "description": "RELOAD world: rock crab"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 100,
+    "position": {
+      "x": 4004,
+      "y": 1730,
+      "z": 0
+    },
+    "description": "RELOAD world: rock crab"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 100,
+    "position": {
+      "x": 3990,
+      "y": 1717,
+      "z": 0
+    },
+    "description": "RELOAD world: rock crab"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 100,
+    "position": {
+      "x": 3951,
+      "y": 1717,
+      "z": 0
+    },
+    "description": "RELOAD world: rock crab"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 100,
+    "position": {
+      "x": 4011,
+      "y": 1741,
+      "z": 0
+    },
+    "description": "RELOAD world: rock crab"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 100,
+    "position": {
+      "x": 3923,
+      "y": 1727,
+      "z": 0
+    },
+    "description": "RELOAD world: rock crab"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 100,
+    "position": {
+      "x": 3994,
+      "y": 1716,
+      "z": 0
+    },
+    "description": "RELOAD world: rock crab"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 3,
+    "id": 100,
+    "position": {
+      "x": 3973,
+      "y": 1716,
+      "z": 0
+    },
+    "description": "RELOAD world: rock crab"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 70,
+    "position": {
+      "x": 3940,
+      "y": 1759,
+      "z": 0
+    },
+    "description": "RELOAD world: skeleton"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 70,
+    "position": {
+      "x": 3899,
+      "y": 1814,
+      "z": 0
+    },
+    "description": "RELOAD world: skeleton"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 70,
+    "position": {
+      "x": 3920,
+      "y": 1798,
+      "z": 0
+    },
+    "description": "RELOAD world: skeleton"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 70,
+    "position": {
+      "x": 3891,
+      "y": 1810,
+      "z": 0
+    },
+    "description": "RELOAD world: skeleton"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 70,
+    "position": {
+      "x": 3906,
+      "y": 1760,
+      "z": 0
+    },
+    "description": "RELOAD world: skeleton"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 70,
+    "position": {
+      "x": 3906,
+      "y": 1808,
+      "z": 0
+    },
+    "description": "RELOAD world: skeleton"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 70,
+    "position": {
+      "x": 3916,
+      "y": 1813,
+      "z": 0
+    },
+    "description": "RELOAD world: skeleton"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 85,
+    "position": {
+      "x": 3912,
+      "y": 1782,
+      "z": 0
+    },
+    "description": "RELOAD world: ghost"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 85,
+    "position": {
+      "x": 3925,
+      "y": 1810,
+      "z": 0
+    },
+    "description": "RELOAD world: ghost"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 85,
+    "position": {
+      "x": 3899,
+      "y": 1782,
+      "z": 0
+    },
+    "description": "RELOAD world: ghost"
+  },
+  {
+    "facing": "SOUTH",
+    "radius": 4,
+    "id": 85,
+    "position": {
+      "x": 3922,
+      "y": 1799,
+      "z": 0
+    },
+    "description": "RELOAD world: ghost"
+  },
+  {
+    "facing": "WEST",
+    "radius": 0,
+    "id": 394,
+    "position": {
+      "x": 3989,
+      "y": 1801,
+      "z": 0
+    },
+    "description": "RELOAD world: banker"
+  },
+  {
+    "facing": "WEST",
+    "radius": 0,
+    "id": 394,
+    "position": {
+      "x": 3989,
+      "y": 1803,
+      "z": 0
+    },
+    "description": "RELOAD world: banker"
+  }
+]
