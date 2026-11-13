@@ -34,6 +34,10 @@ public final class CustomDrops {
      * @return true if the npc was a custom npc and its loot has been handled.
      */
     public static boolean handleKill(Player player, NPC npc) {
+        // RELOAD island: world bosses and sparring npcs
+        if (com.elvarg.game.content.reloadworld.ReloadWorldContent.handleKill(player, npc)) {
+            return true;
+        }
         // Raid npcs give no loot of their own: the raid pays out at the end.
         if (CustomContent.tierForRaidNpc(npc.getId()) != null) {
             return true;

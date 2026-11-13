@@ -4,6 +4,7 @@ import com.elvarg.game.content.Obelisks;
 import com.elvarg.game.content.combat.CombatFactory;
 import com.elvarg.game.content.combat.CombatFactory.CanAttackResponse;
 import com.elvarg.game.content.combat.bountyhunter.BountyHunter;
+import com.elvarg.game.content.reloadworld.ReloadWorld;
 import com.elvarg.game.entity.impl.Mobile;
 import com.elvarg.game.entity.impl.object.GameObject;
 import com.elvarg.game.entity.impl.player.Player;
@@ -13,7 +14,9 @@ import com.elvarg.game.model.Location;
 import com.elvarg.game.model.areas.Area;
 import com.elvarg.game.model.rights.PlayerRights;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 public class WildernessArea extends Area {
@@ -24,6 +27,11 @@ public class WildernessArea extends Area {
 	}
 
 	public static int getLevel(int y) {
+		if (y >= ReloadWorld.MIN_Y && y <= ReloadWorld.MAX_Y) {
+			// The PvP wasteland of the RELOAD island lies far south of the real Wilderness,
+			// so the normal y-based formula would give a negative level there.
+			return ReloadWorld.PVP_LEVEL;
+		}
 		return ((((y > 6400 ? y - 6400 : y) - 3520) / 8) + 1);
 	}
 
@@ -38,10 +46,17 @@ public class WildernessArea extends Area {
 	}
 
 	public WildernessArea() {
-		super(Arrays.asList(new Boundary(2940, 3392, 3525, 3968), new Boundary(2986, 3012, 10338, 10366),
+		super(boundaries());
+	}
+
+	private static List<Boundary> boundaries() {
+		List<Boundary> list = new ArrayList<>(Arrays.asList(new Boundary(2940, 3392, 3525, 3968), new Boundary(2986, 3012, 10338, 10366),
 				new Boundary(3653, 3720, 3441, 3538), new Boundary(3650, 3653, 3457, 3472),
 				new Boundary(3150, 3199, 3796, 3869), new Boundary(2994, 3041, 3733, 3790),
 				new Boundary(3061, 3074, 10253, 10262)));
+		// PvP wasteland of the RELOAD island
+		list.addAll(ReloadWorld.PVP_BOUNDARIES);
+		return list;
 	}
 
 	@Override

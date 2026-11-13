@@ -52,6 +52,7 @@ public class CommandManager {
         put(new OwnerGearCommand(), "ownergear");
         put(new CollectCommand(), "collect", "collector");
         put(new InstanceCommand(), "instance", "i", "leave");
+        put(new ZoneCommand(), "zone", "eiland", "train");
 
         /**
          * Donators Command

@@ -209,6 +209,7 @@ public class PrayerHandler {
                 break;
         }
         character.setPrayerActive(prayerId, true);
+        com.elvarg.game.content.reloadworld.ReloadPrayer.onPrayerActivated(character, prayerId);
 
         if (character.isPlayer()) {
             Player p = character.getAsPlayer();
@@ -362,6 +363,7 @@ public class PrayerHandler {
      * @param player The player to deactivate prayers for.
      */
     public static void deactivatePrayers(Mobile character) {
+        com.elvarg.game.content.reloadworld.ReloadPrayer.deactivate(character);
         for (int i = 0; i < character.getPrayerActive().length; i++) {
             deactivatePrayer(character, i);
         }
@@ -376,6 +378,7 @@ public class PrayerHandler {
     }
 
     public static void resetAll(Player player) {
+        com.elvarg.game.content.reloadworld.ReloadPrayer.deactivate(player);
         for (int i = 0; i < player.getPrayerActive().length; i++) {
             PrayerData pd = PrayerData.prayerData.get(i);
             if (pd == null)

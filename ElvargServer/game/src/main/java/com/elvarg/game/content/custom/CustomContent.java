@@ -87,9 +87,13 @@ public final class CustomContent {
         putPet(15112, 2457, "Raid meester");
         putPet(15113, 3893, "Meestersmid");
 
+        // RELOAD island: world bosses and sparring npcs
+        com.elvarg.game.content.reloadworld.ReloadWorldContent.registerNpcs();
+
         if (!spawned) {
             spawned = true;
             spawnNpcs();
+            com.elvarg.game.content.reloadworld.ReloadWorldContent.spawnNpcs();
         }
     }
 

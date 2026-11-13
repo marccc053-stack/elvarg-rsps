@@ -51,7 +51,7 @@ public class NPCDropGenerator {
         Optional<NpcDropDefinition> def = NpcDropDefinition.get(npc.getId());
         if (def.isPresent()) {
             NPCDropGenerator gen = new NPCDropGenerator(player, def.get());
-            for (Item item : gen.getDropList()) {
+            for (Item item : com.elvarg.game.content.reloadworld.ReloadRules.filterDrops(gen.getDropList())) {
             	// RELOAD auto collector
             	if (com.elvarg.game.content.custom.CustomItems.collect(player, item)) {
             		continue;

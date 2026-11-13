@@ -18,7 +18,10 @@ public class StarterCommand implements Command {
             return;
         }
         CustomProgress.set(player, CustomProgress.KEY_STARTER_CLAIMED, 1);
-        CustomItems.give(player, new Item(4151, 1)); // abyssal whip
+        // With the only-custom-gear rule on, a whip is useless: hand out the tier 1 weapon instead.
+        CustomItems.give(player, new Item(com.elvarg.game.content.reloadworld.ReloadRules.STANDARD_GEAR_DISABLED
+                ? com.elvarg.game.content.custom.CustomTier.GLOED.getItemId(com.elvarg.game.content.custom.CustomTier.SLOT_WEAPON)
+                : 4151, 1)); // abyssal whip
         CustomItems.give(player, new Item(386, 100)); // noted sharks
         CustomItems.give(player, new Item(CustomItems.SHARD, 50));
         CustomItems.give(player, new Item(CustomItems.MYSTERY_BOX, 2));

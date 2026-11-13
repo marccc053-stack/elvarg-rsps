@@ -142,6 +142,13 @@ public final class CustomDefinitions {
         NPCS.put(15111, new CustomNpc(637, "Scherven handelaar", 0, -1, 0, 128, false).talk("Handel"));
         NPCS.put(15112, new CustomNpc(2457, "Raid meester", 0, -1, 0, 128, false).talk("Praat"));
         NPCS.put(15113, new CustomNpc(3893, "Meestersmid", 0, -1, 0, 128, false).talk("Upgrade"));
+
+        // RELOAD island (server: ReloadWorldContent): id, base npc, name, combat level, hue, saturation, scale
+        NPCS.put(15120, new CustomNpc(2098, "Sparringreus", 10, 5, 4, 110, false));
+        NPCS.put(15121, new CustomNpc(891, "Sparringbruut", 60, 53, 5, 135, false));
+        NPCS.put(15130, new CustomNpc(6609, "Vorstklauw", 400, 36, 6, 128, false));
+        NPCS.put(15131, new CustomNpc(6504, "Webkoningin", 600, 21, 6, 128, false));
+        NPCS.put(15132, new CustomNpc(239, "Magmaroth", 800, 0, 7, 140, false));
     }
 
     private static void tier(int number, String name, int hue, int saturation, int[] baseItems, int mobBase,

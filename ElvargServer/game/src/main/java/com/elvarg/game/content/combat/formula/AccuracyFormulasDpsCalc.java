@@ -86,6 +86,9 @@ public class AccuracyFormulasDpsCalc {
         else if (PrayerHandler.isActivated(player, PrayerHandler.PIETY)) {
             prayerBonus = 1.20f;
         }
+        if (com.elvarg.game.content.reloadworld.ReloadPrayer.isActive(player)) {
+            prayerBonus = com.elvarg.game.content.reloadworld.ReloadPrayer.ACCURACY;
+        }
 
         att *= prayerBonus;
         att = (float) Math.floor(att);
@@ -181,6 +184,9 @@ public class AccuracyFormulasDpsCalc {
         else if (PrayerHandler.isActivated(enemy, PrayerHandler.AUGURY)) {
             prayerBonus = 1.25f;
         }
+        if (com.elvarg.game.content.reloadworld.ReloadPrayer.isActive(player)) {
+            prayerBonus = com.elvarg.game.content.reloadworld.ReloadPrayer.ACCURACY;
+        }
 
         def *= prayerBonus;
         def = (float) Math.floor(def);
@@ -270,6 +276,9 @@ public class AccuracyFormulasDpsCalc {
         else if (PrayerHandler.isActivated(player, PrayerHandler.RIGOUR)) {
             prayerMod = 1.2f;
         }
+        if (com.elvarg.game.content.reloadworld.ReloadPrayer.isActive(player)) {
+            prayerMod = com.elvarg.game.content.reloadworld.ReloadPrayer.ACCURACY;
+        }
 
         rangeAccuracy *= prayerMod;
         rangeAccuracy = (float) Math.floor(rangeAccuracy);
@@ -326,6 +335,9 @@ public class AccuracyFormulasDpsCalc {
         }
         else if (PrayerHandler.isActivated(player, PrayerHandler.AUGURY)) {
             prayerBonus = 1.25f;
+        }
+        if (com.elvarg.game.content.reloadworld.ReloadPrayer.isActive(player)) {
+            prayerBonus = com.elvarg.game.content.reloadworld.ReloadPrayer.ACCURACY;
         }
 
         mag *= prayerBonus;

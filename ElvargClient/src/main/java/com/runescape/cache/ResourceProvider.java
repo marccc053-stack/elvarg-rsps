@@ -6,9 +6,11 @@ import com.runescape.collection.Queue;
 import com.runescape.io.Buffer;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
+import java.nio.file.Files;
 import java.util.zip.GZIPInputStream;
 
 public final class ResourceProvider implements Runnable {
@@ -212,6 +214,8 @@ public final class ResourceProvider implements Runnable {
             mapFiles[i2] = stream.readUShort();
             landscapes[i2] = stream.readUShort();
         }
+
+        loadCustomMapIndex();
 
         System.out.println("Loaded: " + file_amounts[3] + " maps");
 
@@ -429,6 +433,47 @@ public final class ResourceProvider implements Runnable {
         return resource;
     }
 
+    /**
+     * Custom map regions that are not packed into the cache. They live as loose gzip files in
+     * Cache/reload_maps/ next to their own map_index (same layout as the cache one) and are
+     * written by tools/reload-world/generate.py.
+     */
+    private static final String CUSTOM_MAP_DIRECTORY = "reload_maps";
+
+    private void loadCustomMapIndex() {
+        try {
+            File index = new File(com.runescape.sign.SignLink.findcachedir() + CUSTOM_MAP_DIRECTORY, "map_index");
+            if (!index.exists()) {
+                return;
+            }
+            Buffer stream = new Buffer(Files.readAllBytes(index.toPath()));
+            int extra = stream.readUShort();
+            int old = areas.length;
+            areas = java.util.Arrays.copyOf(areas, old + extra);
+            mapFiles = java.util.Arrays.copyOf(mapFiles, old + extra);
+            landscapes = java.util.Arrays.copyOf(landscapes, old + extra);
+            for (int i = 0; i < extra; i++) {
+                areas[old + i] = stream.readUShort();
+                mapFiles[old + i] = stream.readUShort();
+                landscapes[old + i] = stream.readUShort();
+            }
+            file_amounts[3] = areas.length;
+            System.out.println("Loaded: " + extra + " custom map regions");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private byte[] readCustomMap(int file) {
+        try {
+            File map = new File(com.runescape.sign.SignLink.findcachedir() + CUSTOM_MAP_DIRECTORY, file + ".gz");
+            return map.exists() ? Files.readAllBytes(map.toPath()) : null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public int resolve(int landscapeOrObject, int regionY, int regionX) {
         /*int code = (regionX << 8) + regionY;
         for (int area = 0; area < areas.length; area++) {
@@ -532,7 +577,10 @@ public final class ResourceProvider implements Runnable {
             expectingData = true;
             byte[] data = null;
 
-            if (clientInstance.indices[0] != null)
+            if (resource.dataType == 3)
+                data = readCustomMap(resource.ID);
+
+            if (data == null && clientInstance.indices[0] != null)
                 data = clientInstance.indices[resource.dataType + 1].decompress(resource.ID);
 
             //CRC MATCHING

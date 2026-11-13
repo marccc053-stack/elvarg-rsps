@@ -84,6 +84,9 @@ public class ButtonClickPacketListener implements PacketExecutor {
 	private static final int OPEN_KEY_BINDINGS = 42552;
 
 	public static boolean handlers(Player player, int button) {
+		if (com.elvarg.game.content.reloadworld.ReloadPrayer.handleButton(player, button)) {
+			return true;
+		}
 		if (PrayerHandler.togglePrayer(player, button)) {
 			return true;
 		}

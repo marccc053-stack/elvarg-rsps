@@ -66,6 +66,11 @@ public class EquipPacketListener implements PacketExecutor {
 			return;
 		}
 
+		if (com.elvarg.game.content.reloadworld.ReloadRules.isStandardGear(id)) {
+			player.getPacketSender().sendMessage("Die uitrusting heeft hier geen kracht. RELOAD gebruikt alleen eigen uitrusting.");
+			return;
+		}
+
 		// Close all other interfaces except for the {@code
 		// Equipment.EQUIPMENT_SCREEN_INTERFACE_ID} one..
 		if (player.getInterfaceId() > 0 && player.getInterfaceId() != Equipment.EQUIPMENT_SCREEN_INTERFACE_ID) {
